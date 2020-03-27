@@ -18,3 +18,15 @@ Create an application - `catalog`
 python3 manage.py startapp catalog
 ```
 
+Run the app
+
+```bash
+python manage.py runserver
+```
+
+Make migrations
+
+```bash
+python manage.py makemigrations
+python3 manage.py migrate
+```
