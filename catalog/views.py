@@ -87,7 +87,7 @@ class AllLoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan, viewable only by permission."""
 
     model = BookInstance
-    permission_required = "catalog.can_mark_retured"
+    permission_required = "catalog.can_mark_returned"
     template_name = "catalog/bookinstance_list_borrowed_all.html"
     paginate_by = 10
 
