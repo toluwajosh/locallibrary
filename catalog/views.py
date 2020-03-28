@@ -84,7 +84,8 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
 
 class AllLoanedBooksListView(PermissionRequiredMixin, generic.ListView):
-    """Generic class-based view listing books on loan, viewable only by permission."""
+    """Generic class-based view listing books on loan,
+    viewable only by permission."""
 
     model = BookInstance
     permission_required = "catalog.can_mark_returned"
