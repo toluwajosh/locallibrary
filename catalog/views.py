@@ -34,7 +34,8 @@ def index(request):
     num_genres = Genre.objects.count()
 
     # Number of visits to this view, as counted in the session variable.
-    num_visits = request.session.get("num_visits", 1)
+    # return 0 if `num_visits` does not exist yet
+    num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
 
     context = {
