@@ -105,18 +105,13 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
 
 class AuthorListView(LoginRequiredMixin, generic.ListView):
     model = Author
-    pagenate_by = 5
+    paginate_by = 10
 
 
 class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
     permission_required = "catalog.can_mark_returned"
 
-    context = {
-        "authore": model,
-        "author_update": AuthorUpdate,
-        "author_delete": AuthorDelete,
-    }
 
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
@@ -149,7 +144,9 @@ class AllLoanedBooksListView(PermissionRequiredMixin, generic.ListView):
         )
 
 
-@permission_required("catalog.can_mark_returned")
+# @permission_required("catalog.can_mark_returned")
+@login_required()
+@permission_required("catalog.can_mark_returned", raise_exception=True)
 def renew_book_librarian(request, pk):
     book_instance = get_object_or_404(BookInstance, pk=pk)
 
